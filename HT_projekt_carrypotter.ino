@@ -66,7 +66,8 @@ void loop() {
 
 
 /*
-  startes the right wheel but not the left one, making the car turn
+  startes the right wheel but not the left one, which turns tha car. To keep driving forward on the line, there is short period of time where bort wheels are driving and then they both stop before the next sensor reading.
+
 */
 
 void left() {
@@ -74,11 +75,19 @@ void left() {
   digitalWrite(motorPinRight, HIGH);
   digitalWrite(motorPinLeft, LOW);
   oledWrite(5, 20, "Turning right!");
+  delay(300);
+  digitalWrite(motorPinRight, HIGH);
+  digitalWrite(motorPinLeft, HIGH);
+  delay(50);
+  digitalWrite(motorPinRight, LOW);
+  digitalWrite(motorPinLeft, LOW);
+  delay(400);
 
 }
 
 /*
-  startes the left wheel but not the right one, making the car turn
+  startes the left wheel but not the right one, which turns tha car. To keep driving forward on the line, there is short period of time where bort wheels are driving and then they both stop before the next sensor reading.
+
 */
 
 void right() {
@@ -86,11 +95,18 @@ void right() {
   digitalWrite(motorPinRight, LOW);
   digitalWrite(motorPinLeft, HIGH);
   oledWrite(5, 20, "Turning left!");
+  delay(100);
+  digitalWrite(motorPinRight, HIGH);
+  digitalWrite(motorPinLeft, HIGH);
+  delay(50);
+  digitalWrite(motorPinRight, LOW);
+  digitalWrite(motorPinLeft, LOW);
+  delay(400);
 
 }
 
 /*
-  startes bort wheels, making the car drive forward
+  startes bort wheels, making the car drive forward and then stops both before the next sensor reading
 */
 
 void forward() {
@@ -98,6 +114,11 @@ void forward() {
   digitalWrite(motorPinRight, HIGH);
   digitalWrite(motorPinLeft, HIGH);
   oledWrite(5, 20, "Forward march!");
+  delay(100);
+  digitalWrite(motorPinRight, LOW);
+  digitalWrite(motorPinLeft, LOW);
+  delay(400);
+
 
 }
 
